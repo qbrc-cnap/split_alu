@@ -2,7 +2,7 @@
 	"input_elements": [
 		{
 			"target": {
-				"target_ids": ["BwaAndBedWorkflow.r1_files", "BwaAndBedWorkflow.r2_files"],
+				"target_ids": ["TaggedReadSplitWorkflow.r1_files", "TaggedReadSplitWorkflow.r2_files"],
 				"name": "input_files",
 				"handler": "input_mapping.py"
 			},
@@ -16,14 +16,14 @@
 		},
 		{
 			"target": {
-				"target_ids": ["BwaAndBedWorkflow.bwa_fa", 
-					"BwaAndBedWorkflow.bwa_amb", 
-					"BwaAndBedWorkflow.bwa_ann", 
-					"BwaAndBedWorkflow.bwa_bwt", 
-					"BwaAndBedWorkflow.bwa_fai", 
-					"BwaAndBedWorkflow.bwa_pac", 
-					"BwaAndBedWorkflow.bwa_sa", 
-					"BwaAndBedWorkflow.bwa_dict" 
+				"target_ids": ["TaggedReadSplitWorkflow.bwa_fa", 
+					"TaggedReadSplitWorkflow.bwa_amb", 
+					"TaggedReadSplitWorkflow.bwa_ann", 
+					"TaggedReadSplitWorkflow.bwa_bwt", 
+					"TaggedReadSplitWorkflow.bwa_fai", 
+					"TaggedReadSplitWorkflow.bwa_pac", 
+					"TaggedReadSplitWorkflow.bwa_sa", 
+					"TaggedReadSplitWorkflow.bwa_dict" 
 				],
 				"name": "genome_choice",
 				"handler": "genome_mapper.py"
@@ -41,7 +41,15 @@
 			}
 		},
 		{
-			"target": "BwaAndBedWorkflow.git_repo_url",
+			"target":"TaggedReadSplitWorkflow.barcode",
+			"display_element": {
+				"type": "text",
+				"label": "Barcode sequence:",
+				"description": "The barcode/tag sequence that was used."
+			}
+		},
+		{
+			"target": "TaggedReadSplitWorkflow.git_repo_url",
 			"display_element": {
 				"type": "dynamic_hidden",
 				"handler": "add_git_repo_url.py",
@@ -51,7 +59,7 @@
 			}
 		},
 		{
-			"target": "BwaAndBedWorkflow.git_commit_hash",
+			"target": "TaggedReadSplitWorkflow.git_commit_hash",
 			"display_element": {
 				"type": "dynamic_hidden",
 				"handler": "add_git_hash.py",
