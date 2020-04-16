@@ -1,0 +1,12 @@
+{
+    "Ensembl Homo sapiens GRCh38.95":{
+        "dict":"gs://cnap-hsph-resources/grch38.95/Homo_sapiens.GRCh38.dna.primary_assembly.dict",
+        "fa":"gs://cnap-hsph-resources/grch38.95/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
+        "amb":"gs://cnap-hsph-resources/grch38.95/Homo_sapiens.GRCh38.dna.primary_assembly.fa.amb",
+        "ann":"gs://cnap-hsph-resources/grch38.95/Homo_sapiens.GRCh38.dna.primary_assembly.fa.ann",
+        "bwt":"gs://cnap-hsph-resources/grch38.95/Homo_sapiens.GRCh38.dna.primary_assembly.fa.bwt",
+        "fai":"gs://cnap-hsph-resources/grch38.95/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
+        "pac":"gs://cnap-hsph-resources/grch38.95/Homo_sapiens.GRCh38.dna.primary_assembly.fa.pac",
+        "sa":"gs://cnap-hsph-resources/grch38.95/Homo_sapiens.GRCh38.dna.primary_assembly.fa.sa"
+    }
+}

@@ -1,0 +1,64 @@
+{
+	"input_elements": [
+		{
+			"target": {
+				"target_ids": ["BwaAndBedWorkflow.r1_files", "BwaAndBedWorkflow.r2_files"],
+				"name": "input_files",
+				"handler": "input_mapping.py"
+			},
+			"display_element": {
+				"type": "file_chooser",
+                "regex_filter": ".*_R[1,2].fastq.gz",
+				"label": "Input files:",
+				"choose_multiple": true,
+				"description": "Choose input fastq-format files to analyze.  Files should end with \"_R1.fastq.gz\" or \"_R2.fastq.gz\".  Unpaired files will be ignored and NOT analyzed."
+			}	
+		},
+		{
+			"target": {
+				"target_ids": ["BwaAndBedWorkflow.bwa_fa", 
+					"BwaAndBedWorkflow.bwa_amb", 
+					"BwaAndBedWorkflow.bwa_ann", 
+					"BwaAndBedWorkflow.bwa_bwt", 
+					"BwaAndBedWorkflow.bwa_fai", 
+					"BwaAndBedWorkflow.bwa_pac", 
+					"BwaAndBedWorkflow.bwa_sa", 
+					"BwaAndBedWorkflow.bwa_dict" 
+				],
+				"name": "genome_choice",
+				"handler": "genome_mapper.py"
+			},
+			"display_element": {
+				"type": "select",
+				"label": "Reference genome",
+				"description": "Choose the reference genome to use for this process.",
+				"choices": [
+					{
+						"value": "Ensembl Homo sapiens GRCh38.95",
+						"display": "Ensembl Homo sapiens GRCh38.95"
+					}
+				]
+			}
+		},
+		{
+			"target": "BwaAndBedWorkflow.git_repo_url",
+			"display_element": {
+				"type": "dynamic_hidden",
+				"handler": "add_git_repo_url.py",
+				"context_args": {
+					"variable_name": "git_repo_url"
+				}
+			}
+		},
+		{
+			"target": "BwaAndBedWorkflow.git_commit_hash",
+			"display_element": {
+				"type": "dynamic_hidden",
+				"handler": "add_git_hash.py",
+				"context_args": {
+					"variable_name": "git_commit_hash"
+				}
+			}
+		}
+	]
+}

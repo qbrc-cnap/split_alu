@@ -1,0 +1,16 @@
+{
+  "TaggedReadSplitWorkflow.r2_files": "Array[File]",
+  "TaggedReadSplitWorkflow.bwa_fa": "File",
+  "TaggedReadSplitWorkflow.bwa_sa": "File",
+  "TaggedReadSplitWorkflow.git_repo_url": "String",
+  "TaggedReadSplitWorkflow.barcode": "String",
+  "TaggedReadSplitWorkflow.bwa_dict": "File",
+  "TaggedReadSplitWorkflow.r1_files": "Array[File]",
+  "TaggedReadSplitWorkflow.bwa_fai": "File",
+  "TaggedReadSplitWorkflow.bwa_bwt": "File",
+  "TaggedReadSplitWorkflow.bwa_amb": "File",
+  "TaggedReadSplitWorkflow.git_commit_hash": "String",
+  "TaggedReadSplitWorkflow.bwa_pac": "File",
+  "TaggedReadSplitWorkflow.bwa_ann": "File"
+}
+
