@@ -118,6 +118,7 @@ task split_and_align_reads {
             -a ${barcode} \
             --rc \
             --action=none \
+            --untrimmed-output /dev/null \
             -o output_R1.fastq.gz \
             ${r1} 2>&1>${sample_name}.R1_barcode_report.txt
 
@@ -126,6 +127,7 @@ task split_and_align_reads {
             -a ${barcode} \
             --rc \
             --action=none \
+            --untrimmed-output /dev/null \
             -o output_R2.fastq.gz \
             ${r2} 2>&1>${sample_name}.R2_barcode_report.txt
 
