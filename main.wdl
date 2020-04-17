@@ -228,8 +228,8 @@ task split_and_align_reads {
 
     runtime {
         docker: "docker.io/blawney/alu_split:v1"
-        cpu: 8
-        memory: "12 G"
+        cpu: 4
+        memory: "24 G"
         disks: "local-disk " + disk_size + " HDD"
         preemptible: 0
     }
