@@ -150,23 +150,23 @@ task split_and_align_reads {
         gzip -f ${sample_name}.split_seqs_R1.fastq
         gzip -f ${sample_name}.split_seqs_R2.fastq
 
-        /opt/software/bwa-0.7.17/bwa mem -t 4 /workspace/full_bwa_index/Homo_sapiens.GRCh38.dna.primary_assembly.fa ${sample_name}.split_seqs_R1.fastq.gz \
-                | /opt/software/samtools/bin/samtools view -bht /workspace/full_bwa_index/Homo_sapiens.GRCh38.dna.primary_assembly.fa - \
+        /opt/software/bwa-0.7.17/bwa mem -t 4 ${bwa_fa} ${sample_name}.split_seqs_R1.fastq.gz \
+                | /opt/software/samtools/bin/samtools view -bht ${bwa_fa} - \
                 | /opt/software/samtools/bin/samtools sort -o ${sample_name}.tagged.R1.bam -;
                 /opt/software/samtools/bin/samtools index ${sample_name}.tagged.R1.bam
 
-        /opt/software/bwa-0.7.17/bwa mem -t 4 /workspace/full_bwa_index/Homo_sapiens.GRCh38.dna.primary_assembly.fa ${sample_name}.split_seqs_R2.fastq.gz \
-                | /opt/software/samtools/bin/samtools view -bht /workspace/full_bwa_index/Homo_sapiens.GRCh38.dna.primary_assembly.fa - \
+        /opt/software/bwa-0.7.17/bwa mem -t 4 ${bwa_fa} ${sample_name}.split_seqs_R2.fastq.gz \
+                | /opt/software/samtools/bin/samtools view -bht ${bwa_fa} - \
                 | /opt/software/samtools/bin/samtools sort -o ${sample_name}.tagged.R2.bam -;
                 /opt/software/samtools/bin/samtools index ${sample_name}.tagged.R2.bam
 
-        /opt/software/bwa-0.7.17/bwa mem -t 4 /workspace/full_bwa_index/Homo_sapiens.GRCh38.dna.primary_assembly.fa ${sample_name}.untagged_original_seqs_R1.fastq.gz \
-                | /opt/software/samtools/bin/samtools view -bht /workspace/full_bwa_index/Homo_sapiens.GRCh38.dna.primary_assembly.fa - \
+        /opt/software/bwa-0.7.17/bwa mem -t 4 ${bwa_fa} ${sample_name}.untagged_original_seqs_R1.fastq.gz \
+                | /opt/software/samtools/bin/samtools view -bht ${bwa_fa} - \
                 | /opt/software/samtools/bin/samtools sort -o ${sample_name}.untagged.R1.bam -;
                 /opt/software/samtools/bin/samtools index ${sample_name}.untagged.R1.bam
 
-        /opt/software/bwa-0.7.17/bwa mem -t 4 /workspace/full_bwa_index/Homo_sapiens.GRCh38.dna.primary_assembly.fa ${sample_name}.untagged_original_seqs_R2.fastq.gz \
-                | /opt/software/samtools/bin/samtools view -bht /workspace/full_bwa_index/Homo_sapiens.GRCh38.dna.primary_assembly.fa - \
+        /opt/software/bwa-0.7.17/bwa mem -t 4 ${bwa_fa} ${sample_name}.untagged_original_seqs_R2.fastq.gz \
+                | /opt/software/samtools/bin/samtools view -bht ${bwa_fa} - \
                 | /opt/software/samtools/bin/samtools sort -o ${sample_name}.untagged.R2.bam -;
                 /opt/software/samtools/bin/samtools index ${sample_name}.untagged.R2.bam
 
