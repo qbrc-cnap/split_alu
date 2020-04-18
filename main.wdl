@@ -213,12 +213,13 @@ task split_and_align_reads {
             ${sample_name}.tagged.R1.w_grps.bam \
             ${sample_name}.tagged.R2.w_grps.bam \
             ${sample_name}.untagged.R1.w_grps.bam \
-            ${sample_name}.untagged.R2.w_grps.bam \
+            ${sample_name}.untagged.R2.w_grps.bam
+            
         /opt/software/samtools/bin/samtools index ${sample_name}.merged.bam
 
         # Run coverage and flagstat
         /opt/software/bedtools2/bin/bedtools genomecov -ibam ${sample_name}.merged.bam -bga > ${sample_name}.bed
-        /opt/software/samtools-1.10/samtools flagstat ${sample_name}.merged.bam > ${sample_name}.flagstat
+        /opt/software/samtools/bin/samtools flagstat ${sample_name}.merged.bam > ${sample_name}.flagstat
     }
 
     output {

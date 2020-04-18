@@ -60,7 +60,8 @@ if __name__ == '__main__':
                     seq = fastq_record[1][a:b]
                     qual = fastq_record[3][a:b]
                     readname = '%s?%d/%d:%d-%d' % (fastq_record[0], i//2, len(breakpoint_list)//2-1 , a, b)
-                    lines.extend([readname, seq, '+', qual])
+                    if b > a:
+                        lines.extend([readname, seq, '+', qual])
                     buffer_count += 1
             if (buffer_count % BUFFER_SIZE) == 0:
                 if len(lines) > 0:
