@@ -48,7 +48,16 @@ workflow TaggedReadSplitWorkflow{
         Array[File] bams = split_and_align_reads.bam
         Array[File] bais = split_and_align_reads.bai
         Array[File] beds = split_and_align_reads.bed
-        Array[File] flagstats = split_and_align_reads.flagstat
+        Array[File] merged_flagstats = split_and_align_reads.merged_flagstat
+        Array[File] tagged_R1_flagstats = split_and_align_reads.tagged_R1_flagstat
+        Array[File] tagged_R2_flagstats = split_and_align_reads.tagged_R2_flagstat
+        Array[File] untagged_R1_flagstats = split_and_align_reads.untagged_R1_flagstat
+        Array[File] untagged_R2_flagstats = split_and_align_reads.untagged_R2_flagstat
+        Array[File] split_R1_fastqs = split_and_align_reads.split_R1_fastq
+        Array[File] split_R2_fastqs = split_and_align_reads.split_R2_fastq
+        Array[File] readnames = split_and_align_reads.readnames
+        Array[File] r1_barcode_reports = split_and_align_reads.r1_barcode_report
+        Array[File] r2_barcode_reports = split_and_align_reads.r2_barcode_report
     }
 
     meta {
