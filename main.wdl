@@ -170,6 +170,13 @@ task split_and_align_reads {
                 | /opt/software/samtools/bin/samtools sort -o ${sample_name}.untagged.R2.bam -;
                 /opt/software/samtools/bin/samtools index ${sample_name}.untagged.R2.bam
 
+        # run flagstate on the individual BAMs
+        /opt/software/samtools/bin/samtools flagstat ${sample_name}.tagged.R1.bam > ${sample_name}.tagged.R1.flagstat
+        /opt/software/samtools/bin/samtools flagstat ${sample_name}.tagged.R2.bam > ${sample_name}.tagged.R2.flagstat
+        /opt/software/samtools/bin/samtools flagstat ${sample_name}.untagged.R1.bam > ${sample_name}.untagged.R1.flagstat
+        /opt/software/samtools/bin/samtools flagstat ${sample_name}.untagged.R2.bam > ${sample_name}.untagged.R2.flagstat
+
+
         # add read groups:
         java -jar /opt/software/picard/picard.jar AddOrReplaceReadGroups \
             I=${sample_name}.tagged.R1.bam \
@@ -219,14 +226,23 @@ task split_and_align_reads {
 
         # Run coverage and flagstat
         /opt/software/bedtools2/bin/bedtools genomecov -ibam ${sample_name}.merged.bam -bga > ${sample_name}.bed
-        /opt/software/samtools/bin/samtools flagstat ${sample_name}.merged.bam > ${sample_name}.flagstat
+        /opt/software/samtools/bin/samtools flagstat ${sample_name}.merged.bam > ${sample_name}.merged.flagstat
     }
 
     output {
+        File r1_barcode_report = "${sample_name}.R1_barcode_report.txt"
+        File r2_barcode_report = "${sample_name}.R2_barcode_report.txt"
+        File readnames = "${sample_name}.readnames.list"
+        File split_R1_fastq = "${sample_name}.split_seqs_R1.fastq.gz"
+        File split_R2_fastq = "${sample_name}.split_seqs_R2.fastq.gz"
         File bam = "${sample_name}.merged.bam"
         File bai = "${sample_name}.merged.bam.bai"
         File bed = "${sample_name}.bed"
-        File flagstat = "${sample_name}.flagstat"
+        File tagged_R1_flagstat = "${sample_name}.tagged.R1.flagstat"
+        File tagged_R2_flagstat = "${sample_name}.tagged.R2.flagstat"
+        File untagged_R1_flagstat = "${sample_name}.untagged.R1.flagstat"
+        File untagged_R2_flagstat = "${sample_name}.untagged.R2.flagstat"
+        File merged_flagstat = "${sample_name}.merged.flagstat"
     }
 
     runtime {
